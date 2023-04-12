@@ -74,7 +74,7 @@ const AllTodos = ({ route }) => {
   // const [todos, setTodos] = useState([])
   const [fields, setFields] = useState([{ todo: "", details: "", id: 0 }]);
   console.log("fields", fields)
-  console.log("todos", todos)
+  console.log("todos ", todos)
 
 const todosNotCompleted = todos.filter((item)=>{
   return item.isCompleted === false
@@ -105,7 +105,7 @@ console.log("todosCompleted",todosCompleted)
 
     const values = [...todos];
 
-    const newvalue = { todo: trimmedTitle, details: trimmedDetails, id: values.length , isCompleted ,starCompleted };
+    const newvalue = { todo: trimmedTitle, details: trimmedDetails, id: "643687d52f5bb25f46486f5d" , isCompleted ,starCompleted,todos: [{"_id": "643687d52f5bb25f46486f5e", "createdAt": "2023-04-12T10:28:37.887Z", "id": "643687d52f5bb25f46486f5e", "isCompleted": true, "todo": "Good man"}] };
    
     console.log("newvalue",newvalue)
     console.log("todos", todos)
@@ -150,39 +150,7 @@ console.log("todosCompleted",todosCompleted)
       <View style={styles.sizedboxmain}></View>
       <Text style={styles.header_text}>Tasks</Text>
 
-      <ScrollView
-        horizontal
-        style={styles.todolist_group}
-      >
-        <FlatList
-          horizontal
-          data={todoList}
-          keyExtractor={item => item.id.toString()}
-          renderItem={({ item, index }) => <>
-            <Pressable style={styles.tab}
-
-              onPress={() => {
-                setBarIndex(index)
-              }}
-            >
-              {/* <View style={styles.grouptab}> */}
-              <Text>{item.todolist}</Text>
-              <View style={[styles.tabbar, barIndex === index ? styles.active : styles.inactive]}></View>
-              {/* </View> */}
-            </Pressable>
-
-          </>
-
-          }
-        />
-        <Pressable style={styles.add_list_btn}
-          onPress={() => navigation.navigate("CreateTodoList")}
-        >
-          <Text style={styles.add_list_text}>
-            + New list
-          </Text>
-        </Pressable>
-      </ScrollView>
+     
 
       {!todos.length && (<>
 
@@ -199,16 +167,18 @@ console.log("todosCompleted",todosCompleted)
       </>)}
 
       {todosNotCompleted && todosNotCompleted.length > 0 && <>
-        <ScrollView>
+        <ScrollView
+          //  horizontal={true} style={{ width: "100%" }}
+           >
           <FlatList
             data={todosNotCompleted}
             keyExtractor={item => item.id.toString()}
-            renderItem={({ item }) => <TodoItem todo={item} />}
+            renderItem={({ item }) => <TodoItem todo={[item]}  />}
           />
         </ScrollView>
       </>}
 
-      {todosCompleted && todosCompleted.length > 0 && <>
+      {/* {todosCompleted && todosCompleted.length > 0 && <>
         <ScrollView>
           <View style={styles.group_completed}>
             <View>
@@ -229,7 +199,7 @@ console.log("todosCompleted",todosCompleted)
             renderItem={({ item }) => <TodoItem todo={item} />}
           /> : null}
         </ScrollView>
-      </>}
+      </>} */}
 
       <Pressable style={styles.add_task}
         onPress={() => setModalVisible(true)}

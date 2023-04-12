@@ -231,9 +231,12 @@ const styles = StyleSheet.create({
     },
 
     add_task:{
+      position:'absolute',
+      zIndex:1,
+      marginLeft:"40%",
     justifyContent:"center",
     alignItems:"center",
-    marginTop: 200,
+    marginTop:height-180,
   
     
     },
