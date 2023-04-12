@@ -16,7 +16,7 @@ import {
 
 
 const INIT_STATE = {
-  currentTodolists: [],
+  currentTodolists: [{"id": 0, "todolist": ""},{"id": 1, "todolist": "My Tasks"}],
   loading: false,
   error: '',
 };
